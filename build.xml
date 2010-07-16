@@ -29,16 +29,22 @@
 		<pathelement location="${testsDir}" />
 	</path>
 	<target name="init">
+		<mkdir dir="classes"/>
 		<copy includeemptydirs="false" todir=".">
 			<fileset dir="." excludes="**/*.launch, **/*.java" />
 		</copy>
 	</target>
 	<target name="cleanClasses">
 		<delete>
-			<fileset dir="${classesDir}" includes="**/*.class" />
+			<fileset dir="${classesDir}" includes="**/*" />
 		</delete>
 	</target>
-	<target depends="cleanClasses" name="cleanall" />
+	<target name="cleanTests">
+		<delete>
+			<fileset dir="${testsReportDir}" includes="**/*" />
+		</delete>
+	</target>
+	<target depends="cleanClasses,cleanTests" name="cleanall" />
 	<target depends="init" name="build">
 		<echo message="${ant.project.name}: ${ant.file}" />
 		<javac debug="true" debuglevel="${debuglevel}" destdir="./classes" source="${source}" target="${target}">
@@ -60,6 +66,7 @@
 		</jar>
 	</target>
 	<target depends="build" name="test">
+		<mkdir dir="junitreports"/>
 		<junit printsummary="yes" haltonfailure="yes">
 			<classpath refid="SpellingCorrector.classes.classpath" />
 
