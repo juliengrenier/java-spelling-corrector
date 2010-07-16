@@ -1,0 +1,14 @@
+#############################################
+#                                           #
+#          java spelling corrector          #
+#                                           #
+#                                           #
+#############################################
+
+Package the jar : 
+  ant package
+
+Running the jar : 
+  java -jar spelling-corrector.jar 
+
+Run with -h to preview the different options.
