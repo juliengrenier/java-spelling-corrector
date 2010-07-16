@@ -1,0 +1,14 @@
+Testsuite: spelling.corrector.StatSpellingCorrectorTest
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.554 sec
+------------- Standard Output ---------------
+StatSpellingCorrector.correct()
+StatSpellingCorrectorHelper.getAlternatives()
+Elapsed time : 4353000 nanoseconds
+Elapsed time : 6990000 nanoseconds
+StatSpellingCorrector.correct()
+Elapsed time : 0 nanoseconds
+StatSpellingCorrector.correct()
+Elapsed time : 0 nanoseconds
+------------- ---------------- ---------------
+
+Testcase: testCorrect took 0.551 sec

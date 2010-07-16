@@ -1,0 +1,7 @@
+Testsuite: spelling.corrector.DefaultSpellingCorrectorHelperTest
+Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 0.012 sec
+
+Testcase: testGetDeletions took 0.002 sec
+Testcase: testGetTranspositions took 0 sec
+Testcase: testGetAlterations took 0.001 sec
+Testcase: testGetInsertions took 0.004 sec

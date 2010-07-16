@@ -1,0 +1,17 @@
+Testsuite: spelling.corrector.StatSpellingCorrectorHelperTest
+Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 0.013 sec
+------------- Standard Output ---------------
+StatSpellingCorrectorHelper.getDeletion()
+Elapsed time : 94000 nanoseconds
+StatSpellingCorrectorHelper.getTransposition()
+Elapsed time : 29000 nanoseconds
+StatSpellingCorrectorHelper.getAlterations()
+Elapsed time : 1005000 nanoseconds
+StatSpellingCorrectorHelper.getInsertions()
+Elapsed time : 708000 nanoseconds
+------------- ---------------- ---------------
+
+Testcase: testGetDeletions took 0.002 sec
+Testcase: testGetTranspositions took 0 sec
+Testcase: testGetAlterations took 0.002 sec
+Testcase: testGetInsertions took 0.005 sec

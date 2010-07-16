@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="build" name="SpellingCorrector">
+	<property environment="env" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.5" />
+	<property name="source" value="1.5" />
+	<property name="classesDir" value="./classes" />
+	<property name="jarName" value="./spelling-corrector.jar" />
+	<property name="testsDir" value="./test" />
+	<property name="testsReportDir" value="./junitreports" />
+	<property name="launcher" value="spelling.CorrectorLauncher" />
+	<path id="SpellingCorrector.source.classpath">
+		<pathelement location="./src" />
+		<fileset dir="./lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<path id="SpellingCorrector.classes.classpath">
+		<pathelement location="${classesDir}" />
+		<fileset dir="./lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<path id="SpellingCorrector.tests.classpath">
+		<pathelement location="${classesDir}" />
+		<fileset dir="./lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement location="${testsDir}" />
+	</path>
+	<target name="init">
+		<copy includeemptydirs="false" todir=".">
+			<fileset dir="." excludes="**/*.launch, **/*.java" />
+		</copy>
+	</target>
+	<target name="cleanClasses">
+		<delete>
+			<fileset dir="${classesDir}" includes="**/*.class" />
+		</delete>
+	</target>
+	<target depends="cleanClasses" name="cleanall" />
+	<target depends="init" name="build">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="./classes" source="${source}" target="${target}">
+			<src path="." />
+			<classpath refid="SpellingCorrector.source.classpath" />
+		</javac>
+	</target>
+
+	<target depends="build" name="start">
+		<java classname="${launcher}" failonerror="true" fork="yes">
+			<classpath refid="SpellingCorrector.classes.classpath" />
+		</java>
+	</target>
+	<target depends="build" name="package">
+		<jar destfile="${jarName}" basedir="${classesDir}">
+			<manifest>
+				<attribute name="Main-Class" value="${launcher}" />
+			</manifest>
+		</jar>
+	</target>
+	<target depends="build" name="test">
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath refid="SpellingCorrector.classes.classpath" />
+
+			<formatter type="plain" />
+
+			<batchtest fork="yes" todir="${testsReportDir}">
+				<fileset dir="${testsDir}">
+					<exclude name="**/SpellingCorrectorTest.java"/>
+					<exclude name="**/SpellingCorrectorHelperTest.java"/>
+					<include name="**/*Test.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+</project>
+
