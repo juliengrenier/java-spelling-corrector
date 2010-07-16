@@ -1,4 +1,0 @@
-Testsuite: spelling.corrector.DefaultSpellingCorrectorTest
-Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 2.457 sec
-
-Testcase: testCorrect took 2.454 sec
